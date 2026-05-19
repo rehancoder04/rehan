@@ -66,18 +66,30 @@ function typeEffect(){
 }
 
 typeEffect();
-
-
 const cursorDot = document.querySelector(".cursor-dot");
-const cursorOutline = document.querySelector(".cursor-outline");
 
-window.addEventListener("mousemove", (e) => {
-  cursorDot.style.left = `${e.clientX}px`;
-  cursorDot.style.top = `${e.clientY}px`;
+let mouseX = 0;
+let mouseY = 0;
 
-  cursorOutline.style.left = `${e.clientX}px`;
-  cursorOutline.style.top = `${e.clientY}px`;
+let dotX = 0;
+let dotY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 });
+
+function animateCursor() {
+  dotX += (mouseX - dotX) * 0.12;
+  dotY += (mouseY - dotY) * 0.12;
+
+ cursorDot.style.left = (dotX - 7) + "px";
+cursorDot.style.top = (dotY - 7) + "px";
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
 
 const scrollProgress = document.querySelector(".scroll-progress");
 
