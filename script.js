@@ -101,7 +101,7 @@ window.addEventListener("scroll", () => {
   scrollProgress.style.width = `${progress}%`;
 });
 
-const topBtn = document.getElementById("topBtn");
+const topBtn = document.getElementById("scrollTopBtn");
 
 window.addEventListener("scroll", () => {
   if(window.scrollY > 300){
